@@ -1,0 +1,27 @@
+import 'package:equatable/equatable.dart';
+import '../../../data/models/chat_model.dart';
+
+abstract class ChatListState extends Equatable {
+  @override
+  List<Object?> get props => [];
+}
+
+class ChatListInitial extends ChatListState {}
+
+class ChatListLoading extends ChatListState {}
+
+class ChatListLoaded extends ChatListState {
+  final List<ChatModel> chats;
+  ChatListLoaded(this.chats);
+
+  @override
+  List<Object?> get props => [chats];
+}
+
+class ChatListError extends ChatListState {
+  final String message;
+  ChatListError(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
